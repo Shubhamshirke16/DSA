@@ -1,3 +1,5 @@
+//Find First and Last Position of Element in Sorted Array
+
 int firstOc(vector<int> &a,int k,int s)
 {
   int start=0,ans=-1;
