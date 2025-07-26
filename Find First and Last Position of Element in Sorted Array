@@ -1,0 +1,63 @@
+int firstOc(vector<int> &a,int k,int s)
+{
+  int start=0,ans=-1;
+  int end=s-1;
+  int mid=start+(end-start)/2;
+  
+  while(start <= end)
+  {
+    if(a[mid]==k)
+    {
+      ans=mid;
+      end=mid-1;
+    }
+    else if(a[mid]>k)
+    {
+      end=mid-1;
+    }
+    else
+    {
+      start=mid+1;
+    }
+    mid=start+(end-start)/2;
+  }
+  
+  return ans;
+}
+
+int lastOc(vector<int> &a,int k,int s)
+{
+  int start=0,ans=-1;
+  int end=s-1;
+  int mid=start+(end-start)/2;
+  
+  while(start <= end)
+  {
+    if(a[mid]==k)
+    {
+      ans=mid;
+      start=mid+1;
+    }
+    else if(a[mid]>k)
+    {
+      end=mid-1;
+    }
+    else
+    {
+      start=mid+1;
+    }
+    mid=start+(end-start)/2;
+  }
+  
+  return ans;
+}
+vector<int> searchRange(vector<int> &arr, int x)
+{
+	vector <int> p;
+
+	p.push_back(firstOc(arr,x,arr.size()));
+	p.push_back(lastOc(arr,x,arr.size()));
+
+	return p;
+}
+
