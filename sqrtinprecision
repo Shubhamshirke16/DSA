@@ -1,0 +1,61 @@
+//find sqrt of numbe---for example n = 34  output root:5.83
+
+#include <iostream>
+using namespace std;
+
+    int mySqrt(int x) {
+        if(x==0) return 0;
+        if(x<3) return 1;
+
+        int start=1,end=x;
+        long long ans=-1;
+
+        long long int mid=start+(end-start)/2;
+        
+        while(start <= end)
+        {
+            if(mid*mid==x)
+            {
+                return mid;
+            }
+            else if(x<mid*mid)
+            {
+                end=mid-1;
+            }
+            else
+            {
+                start=mid+1;
+                ans=mid;
+            }
+            mid=start+(end-start)/2;
+        }
+
+      return ans;
+    }
+    
+double morepre(int n,int pre,int tempsol)
+{
+  double factor=1;
+  double ans=tempsol;
+  for(int i=0;i<pre;i++)
+  {
+    factor=factor/10;
+    for( double j=ans;j*j<=n;j+=factor)
+    {
+      ans=j;
+    }
+  }
+  return ans;
+}
+
+int main() 
+{
+  int n = 34,res;
+  double res2;
+  res=mySqrt(n);
+  res2=morepre(n,3,res);
+  
+  cout <<"root:"<< res2;
+  
+  return 0;
+}
