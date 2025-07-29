@@ -1,0 +1,60 @@
+// Sum Of Two Arrays
+
+#include <bits/stdc++.h> 
+void reverseArray(vector <int> &ans)
+{
+	int s=0;
+	int e=ans.size()-1;
+
+	while(s<=e)
+	{
+		swap(ans[s],ans[e]);
+		s++;
+		e--;
+	}
+
+}
+vector<int> findArraySum(vector<int>&a, int n, vector<int>&b, int m) {
+	int carry=0,sum=0;
+
+	vector <int> ans;
+
+	int i=n-1,j=m-1;
+
+	while(i>=0 && j>=0)
+	{
+		int temp=a[i]+b[j]+carry;
+		carry=temp/10;
+		sum=temp%10;
+		ans.push_back(sum);
+		i--;
+		j--;
+	}
+
+	while(i>=0)
+	{
+		int temp=a[i]+carry;
+		carry=temp/10;
+		sum=temp%10;
+		ans.push_back(sum);
+		i--;
+	}
+	while(j>=0)
+	{
+		int temp=b[j]+carry;
+		carry=temp/10;
+		sum=temp%10;
+		ans.push_back(sum);
+		j--;
+	}
+	while(carry!=0)
+	{
+		int temp=carry;
+		carry=temp/10;
+		sum=temp%10;
+		ans.push_back(sum);
+		
+	}
+	reverseArray(ans);
+	return ans;
+}
